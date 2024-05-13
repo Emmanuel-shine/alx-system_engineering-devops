@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Find the PID of the process
+pid=$(pgrep -f "4-to_infinity_and_beyond")
+
+# Check if the process is running
+if [ -n "$pid" ]; then
+    # Send SIGINT signal to the process
+    kill -2 "$pid"
+fi
+

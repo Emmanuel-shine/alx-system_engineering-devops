@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Get the current script's PID
+script_pid=$$
+
+# Find processes whose name contains the word "bash" and extract their PID and process name
+pids=$(pgrep -f bash)
+
+# Iterate through each PID and process name
+for pid in $pids; do
+    # Exclude the current script's PID
+    if [ "$pid" != "$script_pid" ]; then
+        echo "$pid bash"
+    fi
+done
+

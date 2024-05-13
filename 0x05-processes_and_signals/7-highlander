@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Find the PID of the process named "7-highlander"
+pid=$(pgrep -f "7-highlander")
+
+# Check if the process is running
+if [ -n "$pid" ]; then
+    # Send SIGTERM signal to the process
+    kill -s SIGTERM "$pid"
+fi
+
