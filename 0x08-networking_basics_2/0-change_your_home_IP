@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Backup the original hosts file
+cp /etc/hosts /etc/hosts.backup
+
+# Update the hosts file
+sudo sed -i 's/127.0.0.1\slocalhost/127.0.0.2 localhost/g' /etc/hosts
+sudo sed -i 's/facebook.com/8.8.8.8/g' /etc/hosts
+
+# Flush DNS cache
+sudo systemd-resolve --flush-caches
+
+echo "Hosts file updated. Now localhost resolves to 127.0.0.2 and facebook.com resolves to 8.8.8.8"
+
